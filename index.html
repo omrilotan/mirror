@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Mirror</title>
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: black;
+      }
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scaleX(-1); /* Mirror the video horizontally */
+      }
+    </style>
+  </head>
+  <body>
+    <video id="video" autoplay></video>
+    <script>
+      start();
+      async function start() {
+        const stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+        });
+        const video = document.getElementById("video");
+        video.srcObject = stream;
+        video.play();
+      }
+    </script>
+  </body>
+</html>
