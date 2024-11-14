@@ -36,6 +36,12 @@
         const video = document.getElementById("video");
         video.srcObject = stream;
         video.play();
+        video.addEventListener("click", () => {
+	        video.style.objectFit = getComputedStyle(video)["object-fit"] === "contain"
+            ? "cover"
+            : "contain"
+          ;
+        });
       }
     </script>
   </body>
